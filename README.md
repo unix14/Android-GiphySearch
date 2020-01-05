@@ -2,7 +2,7 @@
 
 ![preview1](artwork/preview.png) ![preview2](artwork/preview2.png)
 
-This library is a wrapper Giphy's wonderful [API](https://github.com/Giphy/GiphyAPI) and allows you to easily include animated GIFs in your projects.
+This library is a refactor of a [wrapper library](https://github.com/klinker24/Android-GiphySearch) of Giphy's wonderful [API](https://github.com/Giphy/GiphyAPI) and allows you to easily include animated GIFs in your projects.
 
 The library will start by showing the trending GIFs then allow the user to search through Giphy's vast amount of animations.
 
