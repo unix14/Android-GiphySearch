@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="false" android:color="#64646464"/>
+    <item android:state_activated="true" android:color="#FF890A" />
+    <item android:color="#64646464"/>
+</selector>

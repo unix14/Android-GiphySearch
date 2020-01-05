@@ -4,42 +4,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
         android:elevation="5dp">
+
+        <ImageButton
+            android:id="@+id/search_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:background="@null"/>
 
         <EditText
             android:id="@+id/search_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@null"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@null"
             android:hint="@string/find_a_gif"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:singleLine="true"
             android:textSize="16sp" />
 
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/list_progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ProgressBar
-            style="@style/Widget.AppCompat.ProgressBar"
+        <ImageButton
+            android:id="@+id/sticker_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateOnly="true" />
+            android:src="@drawable/ic_sticker"
+            android:tint="@color/sticker_btn_selector"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:background="@null"/>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -49,5 +56,14 @@
         android:layout_marginTop="40dp"
         android:clipToPadding="true"
         android:saveEnabled="false" />
+
+    <ProgressBar
+        android:id="@+id/list_progress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateOnly="true"
+        android:visibility="gone" />
 
 </FrameLayout>
