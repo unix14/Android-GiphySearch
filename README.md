@@ -6,7 +6,7 @@ This library is a refactor of a [wrapper library](https://github.com/klinker24/A
 
 The library will start by showing the trending GIFs then allow the user to search through Giphy's vast amount of animations.
 
-GIFs are automatically played when the user scrolls through them, then, when the user clicks a GIF, it will be downloaded and the resulting `https://` URL will be returned to your `Activity`, unless you specified `downloadFile(true)` then it will return `file://` URI to your `Activity`.
+GIFs are automatically played when the user scrolls through them, then, when the user clicks a GIF, it will be downloaded and the resulting `URL` will be returned to your `Activity`, unless you specified `downloadFile(true)` then it will return `file://` URI to your `Activity`.
 
 The library is extremely easy to implement, as shown below. Enjoy all the GIFs!
 
@@ -38,8 +38,8 @@ and resync the project.
 
 To create a giphy search activity, you can use `Giphy.Builder`:
 
-```java
-Giphy.Builder(activity, "dc6zaTOxFJmzC")    // Giphy's BETA key
+```kotlin
+Giphy.Builder(activity, "dc6zaTOxFJmzC")    	// Giphy's BETA key
     .maxFileSize(5 * 1024 * 1024)               // 5 mb
     .downloadFile(true)				// false by default
     .start()
