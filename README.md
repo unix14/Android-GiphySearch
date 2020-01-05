@@ -28,7 +28,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 ```groovy
 dependencies {
 	...
-	compile 'com.klinkerapps:giphy:2.1.2'
+	implementation 'com.klinkerapps:giphy:2.1.2'
 }
 ```
 
@@ -39,9 +39,10 @@ and resync the project.
 To create a giphy search activity, you can use `Giphy.Builder`:
 
 ```java
-new Giphy.Builder(activity, "dc6zaTOxFJmzC")    // Giphy's BETA key
+Giphy.Builder(activity, "dc6zaTOxFJmzC")    // Giphy's BETA key
     .maxFileSize(5 * 1024 * 1024)               // 5 mb
-    .start();
+    .downloadFile(true)				// false by default
+    .start()
 ```
 
 Max file size is optional. In your activity, listen for the results:
