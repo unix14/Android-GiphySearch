@@ -21,6 +21,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -41,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.small).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC") //Giphy BETA API Key
-                        .setPreviewSize(Giphy.PREVIEW_SMALL)
+                new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")        //Giphy BETA API Key
+                        .setPreviewSize(Giphy.Companion.getPREVIEW_SMALL())
                         .maxFileSize(2 * 1024 * 1024) //2MB
+                        .downloadFile(true)
                         .start();
             }
         });
@@ -52,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.PREVIEW_MEDIUM)
+                        .setPreviewSize(Giphy.Companion.getPREVIEW_MEDIUM())
                         .maxFileSize(5 * 1024 * 1024) //5MB
+                        .downloadFile(false)
                         .start();
             }
         });
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.PREVIEW_LARGE)
+                        .setPreviewSize(Giphy.Companion.getPREVIEW_LARGE())
                         .maxFileSize(8 * 1024 * 1024)
                         .start();
             }
@@ -78,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Giphy.REQUEST_GIPHY) {
+        if (requestCode == Giphy.Companion.getREQUEST_GIPHY()) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 imageView.setVisibility(View.VISIBLE);
-                Uri gif = data.getData();
-                Glide.with(this).asGif().load(gif).into(imageView);
+                Uri gifUrl = data.getData();
+                Glide.with(this).asGif().load(gifUrl).into(imageView);
+                Toast.makeText(this,gifUrl.toString(),Toast.LENGTH_LONG).show();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
