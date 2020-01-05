@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")        //Giphy BETA API Key
                         .setPreviewSize(Giphy.Companion.getPREVIEW_SMALL())
                         .maxFileSize(2 * 1024 * 1024) //2MB
-                        .downloadFile(true)
                         .start();
             }
         });
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
                         .setPreviewSize(Giphy.Companion.getPREVIEW_MEDIUM())
                         .maxFileSize(5 * 1024 * 1024) //5MB
-                        .downloadFile(false)
                         .start();
             }
         });
@@ -67,6 +65,28 @@ public class MainActivity extends AppCompatActivity {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
                         .setPreviewSize(Giphy.Companion.getPREVIEW_LARGE())
                         .maxFileSize(8 * 1024 * 1024)
+                        .start();
+            }
+        });
+
+        findViewById(R.id.url).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
+                        .setPreviewSize(Giphy.Companion.getPREVIEW_MEDIUM())
+                        .maxFileSize(5 * 1024 * 1024) //5MB
+                        .downloadFile(false)            //false by default
+                        .start();
+            }
+        });
+
+        findViewById(R.id.file).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
+                        .setPreviewSize(Giphy.Companion.getPREVIEW_LARGE())
+                        .maxFileSize(8 * 1024 * 1024)
+                        .downloadFile(true)
                         .start();
             }
         });

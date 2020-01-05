@@ -22,6 +22,18 @@
         android:text="@string/search_large" />
 
     <Button
+        android:id="@+id/url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_for_url" />
+
+    <Button
+        android:id="@+id/file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_for_file" />
+
+    <Button
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
