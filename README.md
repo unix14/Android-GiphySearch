@@ -29,6 +29,7 @@ To include it in your project, add this to your module's `build.gradle` file:
 
 ```groovy
 dependencies {
+    ...
     implementation 'com.github.unix14:Android-GiphySearch:2.1.5'
 }
 ```
