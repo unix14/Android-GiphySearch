@@ -1,5 +1,5 @@
 # Giphy Android Search Library
-
+[![npm version](https://badge.fury.io/js/survey-monkey-streams.svg)](//npmjs.com/package/unix14-Android-GiphySearch)
 ![preview1](artwork/preview.png) ![preview2](artwork/preview2.png)
 
 This library is a refactor of a [wrapper library](https://github.com/klinker24/Android-GiphySearch) of Giphy's wonderful [API](https://github.com/Giphy/GiphyAPI) and allows you to easily include animated GIFs in your projects.
