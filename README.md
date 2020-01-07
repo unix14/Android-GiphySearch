@@ -1,7 +1,8 @@
 # Giphy Android Search Library
 ![preview1](artwork/preview.png) ![preview2](artwork/preview2.png)
 
-[![version](https://badge.fury.io/js/survey-monkey-streams.svg)](https://jitpack.io/#unix14/Android-GiphySearch)
+[![Release](https://jitpack.io/v/User/Repo.svg)]
+(https://jitpack.io/#Unix14/Android-GiphySearch)
 
 This library is a refactor of a [wrapper library](https://github.com/klinker24/Android-GiphySearch) of Giphy's wonderful [API](https://github.com/Giphy/GiphyAPI) and allows you to easily include animated GIFs in your projects.
 
