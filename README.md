@@ -1,8 +1,8 @@
 # Giphy Android Search Library
 ![preview1](artwork/preview.png) ![preview2](artwork/preview2.png)
 
-[![Release](https://jitpack.io/v/#unix14/Android-GiphySearch.svg)]
-(https://jitpack.io/#unix14/Android-GiphySearch)
+[![Release](https://jitpack.io/v/unix14/Repo.svg)]
+(https://jitpack.io/#unix14/Repo)
 
 This library is a refactor of a [wrapper library](https://github.com/klinker24/Android-GiphySearch) of Giphy's wonderful [API](https://github.com/Giphy/GiphyAPI) and allows you to easily include animated GIFs in your projects.
 
@@ -29,7 +29,6 @@ To include it in your project, add this to your module's `build.gradle` file:
 
 ```groovy
 dependencies {
-	...
     implementation 'com.github.unix14:Android-GiphySearch:2.1.5'
 }
 ```
