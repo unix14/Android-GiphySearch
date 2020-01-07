@@ -177,7 +177,10 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
             adapter = GiphyAdapter(gifs, object : GiphyAdapter.Callback {
                 override fun onClick(item: GiphyApiHelper.Gif) {
                     if (downloadFile) {
-                        DownloadGif(this@GiphyActivity, item.gifUrl, item.name, saveLocation).execute()
+                        if(saveLocation == null){
+                            saveLocation = ""
+                        }
+                        DownloadGif(this@GiphyActivity, item.gifUrl, item.name, saveLocation!!).execute()
                     } else {
                         setResult(Activity.RESULT_OK, Intent().setData(Uri.parse(item.gifUrl)))
                         finish()

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")        //Giphy BETA API Key
-                        .setPreviewSize(Giphy.Companion.getPREVIEW_SMALL())
+                        .setPreviewSize(Giphy.PREVIEW_SMALL)
                         .maxFileSize(2 * 1024 * 1024) //2MB
                         .start();
             }
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.Companion.getPREVIEW_MEDIUM())
+                        .setPreviewSize(Giphy.PREVIEW_MEDIUM)
                         .maxFileSize(5 * 1024 * 1024) //5MB
                         .start();
             }
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.Companion.getPREVIEW_LARGE())
+                        .setPreviewSize(Giphy.PREVIEW_LARGE)
                         .maxFileSize(8 * 1024 * 1024)
                         .start();
             }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.Companion.getPREVIEW_MEDIUM())
+                        .setPreviewSize(Giphy.PREVIEW_MEDIUM)
                         .maxFileSize(5 * 1024 * 1024) //5MB
                         .downloadFile(false)            //false by default
                         .start();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new Giphy.Builder(MainActivity.this, "dc6zaTOxFJmzC")
-                        .setPreviewSize(Giphy.Companion.getPREVIEW_LARGE())
+                        .setPreviewSize(Giphy.PREVIEW_LARGE)
                         .maxFileSize(8 * 1024 * 1024)
                         .downloadFile(true)
                         .start();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Giphy.Companion.getREQUEST_GIPHY()) {
+        if (requestCode == Giphy.REQUEST_GIPHY) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 imageView.setVisibility(View.VISIBLE);
                 Uri gifUrl = data.getData();

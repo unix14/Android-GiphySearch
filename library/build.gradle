@@ -13,6 +13,8 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion Integer.parseInt(project.COMPILE_SDK)
@@ -42,10 +44,20 @@ android {
 
 dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
-    implementation "com.github.bumptech.glide:glide:4.9.0"
+    implementation "com.github.bumptech.glide:glide:4.10.0"
 
     implementation "androidx.appcompat:appcompat:${ANDROID_X_VERSION}"
-    implementation "com.google.android.material:material:${ANDROID_X_VERSION}"
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-apply from: 'https://raw.github.com/klinker24/gradle-mvn-push/master/gradle-mvn-push.gradle'
+//apply from: 'https://raw.github.com/klinker24/gradle-mvn-push/master/gradle-mvn-push.gradle'
+repositories {
+    mavenCentral()
+}
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}

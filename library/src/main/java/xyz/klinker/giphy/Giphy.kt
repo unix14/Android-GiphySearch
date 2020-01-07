@@ -49,11 +49,7 @@ class Giphy private constructor(private val activity: Activity, private val apiK
 
     class Builder(activity: Activity, apiKey: String) {
 
-        private val giphy: Giphy
-
-        init {
-            this.giphy = Giphy(activity, apiKey)
-        }
+        private val giphy: Giphy = Giphy(activity, apiKey)
 
         fun setSaveLocation(saveLocation: String): Giphy.Builder {
             giphy.saveLocation = saveLocation
@@ -96,10 +92,10 @@ class Giphy private constructor(private val activity: Activity, private val apiK
 
     companion object {
 
-        val REQUEST_GIPHY = 10012
-        val PREVIEW_SMALL = 0
-        val PREVIEW_MEDIUM = 1
-        val PREVIEW_LARGE = 2
+        const val REQUEST_GIPHY = 10012
+        const val PREVIEW_SMALL = 0
+        const val PREVIEW_MEDIUM = 1
+        const val PREVIEW_LARGE = 2
     }
 
 }
