@@ -20,7 +20,8 @@ In your project's root `build.gradle` (not your module's `build.gradle`):
 allprojects {
     repositories {
         ...
-        jcenter()
+        jcenter()   //might not be needed
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
