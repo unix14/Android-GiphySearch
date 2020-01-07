@@ -3,7 +3,6 @@ package xyz.klinker.giphy
 import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -12,7 +11,6 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class GiphyView : FrameLayout {
@@ -41,11 +39,11 @@ class GiphyView : FrameLayout {
         val gifView = LayoutInflater.from(context).inflate(R.layout.giphy_search_activity, this, false)
         addView(gifView)
 
-        recycler = findViewById<View>(R.id.recycler_view) as RecyclerView
-        progressSpinner = findViewById(R.id.list_progress)
+        recycler = findViewById<View>(R.id.recyclerView) as RecyclerView
+        progressSpinner = findViewById(R.id.pb)
 
 
-        searchView = findViewById<View>(R.id.search_view) as EditText
+        searchView = findViewById<View>(R.id.searchView) as EditText
         searchView!!.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 executeQuery(searchView!!.text.toString())

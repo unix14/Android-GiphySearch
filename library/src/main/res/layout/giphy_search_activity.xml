@@ -1,68 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/toolbar_container"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingTop="6dp"
-        android:elevation="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
-        <ImageButton
-            android:id="@+id/search_Btn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search_black_24dp"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:background="@null"/>
+            android:layoutDirection="locale"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/search_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/find_a_gif"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textSize="16sp" />
 
-        <ImageButton
-            android:id="@+id/sticker_Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_sticker"
-            android:tint="@color/sticker_btn_selector"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:background="@null"/>
+            <ImageButton
+                android:id="@+id/searchBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:padding="10dp"
+                android:src="@drawable/ic_search_black_24dp" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:hint="@string/find_a_gif"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/stickerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:padding="10dp"
+                android:src="@drawable/ic_sticker"
+                android:tint="@color/sticker_btn_selector" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/grey"
         android:clipToPadding="true"
         android:saveEnabled="false" />
 
     <ProgressBar
-        android:id="@+id/list_progress"
-        style="@style/Widget.AppCompat.ProgressBar"
+        android:id="@+id/pb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:indeterminateTint="@color/dark_blue_40"
         android:indeterminateOnly="true"
         android:visibility="gone" />
 

@@ -15,7 +15,7 @@
   -->
 
 <resources>
-    <string name="find_a_gif">חפשו GIF באנגלית בלבד</string>
+    <string name="find_a_gif">חפשו GIF</string>
     <string name="find_a_sticker">חפשו סטיקרים</string>
     <string name="play_gif">נגן</string>
     <string name="add_gif">הוסף GIF</string>

@@ -32,6 +32,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import xyz.klinker.common.InfiniteRecyclerViewScrollListener
@@ -79,15 +80,20 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
 
         setContentView(R.layout.giphy_search_activity)
 
-        recycler = findViewById<View>(R.id.recycler_view) as RecyclerView
-        progressSpinner = findViewById(R.id.list_progress)
+        recycler = findViewById<View>(R.id.recyclerView) as RecyclerView
+        progressSpinner = findViewById(R.id.pb)
 
-        searchBtn = findViewById(R.id.search_Btn)
-        stickerBtn = findViewById(R.id.sticker_Btn)
+        searchBtn = findViewById(R.id.searchBtn)
+        stickerBtn = findViewById(R.id.stickerBtn)
 
         searchBtn!!.setOnClickListener {
-            executeQuery(searchView!!.text.toString())
-            dismissKeyboard()
+            if (!queried) {
+                executeQuery(searchView!!.text.toString())
+                dismissKeyboard()
+            } else {
+                loadTrending()
+                searchView!!.setText("")
+            }
         }
 
         stickerBtn!!.setOnClickListener {
@@ -102,7 +108,7 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
             }
         }
 
-        searchView = findViewById<View>(R.id.search_view) as EditText
+        searchView = findViewById<View>(R.id.searchView) as EditText
         searchView!!.addTextChangedListener(this)
 
         searchView!!.setOnEditorActionListener(
@@ -126,7 +132,23 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
 
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (count > 0) {
+            searchBtn?.setImageDrawable(
+                    ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_arrow_back
+                    )
+            )
+        } else {
+            searchBtn?.setImageDrawable(
+                    ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_search_black_24dp
+                    )
+            )
+        }
+    }
 
     override fun afterTextChanged(s: Editable) {
         if (s.toString().isEmpty()) {
@@ -135,7 +157,6 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
             executeQuery(searchView!!.text.toString())
         }
     }
-
 
     override fun onBackPressed() {
         if (queried) {
@@ -177,10 +198,7 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
             adapter = GiphyAdapter(gifs, object : GiphyAdapter.Callback {
                 override fun onClick(item: GiphyApiHelper.Gif) {
                     if (downloadFile) {
-                        if(saveLocation == null){
-                            saveLocation = ""
-                        }
-                        DownloadGif(this@GiphyActivity, item.gifUrl, item.name, saveLocation!!).execute()
+                        DownloadGif(this@GiphyActivity, item.gifUrl, item.name, saveLocation).execute()
                     } else {
                         setResult(Activity.RESULT_OK, Intent().setData(Uri.parse(item.gifUrl)))
                         finish()
@@ -215,20 +233,16 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
             override fun onDataHunger() {}
 
             override fun requestData(offset: Int) {
-                onLoadNextPage(offset)
+                progressSpinner!!.visibility = View.VISIBLE
+
+                helper!!.loadMoreSearchResults(searchView!!.text.toString(), offset, object : GiphyApiHelper.Callback {
+                    override fun onResponse(gifs: List<GiphyApiHelper.Gif>) {
+                        progressSpinner!!.visibility = View.GONE
+                        addGifsToList(gifs)
+                    }
+                })
             }
         }
-    }
-
-    private fun onLoadNextPage(offset: Int) {
-        progressSpinner!!.visibility = View.VISIBLE
-
-        helper!!.loadMoreSearchResults(searchView!!.text.toString(), offset, object : GiphyApiHelper.Callback {
-            override fun onResponse(gifs: List<GiphyApiHelper.Gif>) {
-                progressSpinner!!.visibility = View.GONE
-                addGifsToList(gifs)
-            }
-        })
     }
 
     private fun addGifsToList(gifs: List<GiphyApiHelper.Gif>) {
@@ -245,7 +259,6 @@ class GiphyActivity : AppCompatActivity(), TextWatcher {
     }
 
     companion object {
-
         val EXTRA_API_KEY = "api_key"
         val EXTRA_GIF_LIMIT = "gif_limit"
         val EXTRA_PREVIEW_SIZE = "preview_size"

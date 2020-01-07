@@ -18,7 +18,7 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.nio.channels.FileChannel
 
-internal class DownloadGif @JvmOverloads constructor(var activity: Activity, var gifURL: String, var name: String, var saveLocation: String, var callback: GifSelectedCallback? = null) : AsyncTask<Void, Void, Uri>() {
+internal class DownloadGif @JvmOverloads constructor(var activity: Activity, var gifURL: String, var name: String, var saveLocation: String?, var callback: GifSelectedCallback? = null) : AsyncTask<Void, Void, Uri>() {
     private lateinit var dialog: ProgressDialog
 
     public override fun onPreExecute() {
@@ -36,7 +36,6 @@ internal class DownloadGif @JvmOverloads constructor(var activity: Activity, var
             e.printStackTrace()
             return null
         }
-
     }
 
     override fun onPostExecute(downloadedTo: Uri?) {
@@ -68,7 +67,6 @@ internal class DownloadGif @JvmOverloads constructor(var activity: Activity, var
         } catch (e: IllegalStateException) {
             Log.e("Exception", e.toString())
         }
-
     }
 
     @Throws(Exception::class)
@@ -103,7 +101,6 @@ internal class DownloadGif @JvmOverloads constructor(var activity: Activity, var
             inStream.close()
             outStream.close()
         }
-
         return Uri.fromFile(saveGif)
     }
 }
